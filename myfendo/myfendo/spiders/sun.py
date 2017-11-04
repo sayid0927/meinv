@@ -20,7 +20,7 @@ class SunSpider(RedisCrawlSpider):
     # start_urls = ['http://www.meinvha.com/xinggan/']
 
     home_url ='http://www.meinvha.com'
-    nex_list ='http://www.meinvha.com/xinggan/'
+    nex_list ='http://www.meinvha.com/mote/'
 
     allowed_domains = ['meinvha.com']
 
