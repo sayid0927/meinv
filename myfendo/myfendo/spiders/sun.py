@@ -17,10 +17,10 @@ sys.setdefaultencoding('utf8')
 class SunSpider(RedisCrawlSpider):
     name = 'sun'
     allowed_domains = ['meinvha.com']
-    # start_urls = ['http://www.meinvha.com/xinggan/']
+    # start_urls = ['http://www.meinvha.com/siwameitui/']
 
     home_url ='http://www.meinvha.com'
-    nex_list ='http://www.meinvha.com/siwameitui/'
+    nex_list ='http://www.meinvha.com/qingchun/'
 
     allowed_domains = ['meinvha.com']
 
