@@ -103,16 +103,17 @@ class MyfendoPipeline(object):
                 else:
                     url = 'http://www.meinvha.com' + url
 
-                self.cursor.execute("select * from title where title= '%s'" % meinvha_title)
-                re = self.cursor.fetchall()
-                title_id = re[0][0]
-                sql = "insert into img_url(img_url, title_id) values(%s,%s)"
-                params = (url, title_id)
-                self.cursor.execute(sql, params)
+                ir = requests.get(url)
+                if ir.status_code == 200:
 
-                # ir = requests.get(url)
-                # open(ss + "\\" + str(img_name)+ str(i) + '.jpg', 'wb').write(ir.content)
-                # i = i+5
+                    self.cursor.execute("select * from title where title= '%s'" % meinvha_title)
+                    re = self.cursor.fetchall()
+                    title_id = re[0][0]
+                    sql = "insert into img_url(img_url, title_id) values(%s,%s)"
+                    params = (url, title_id)
+                    self.cursor.execute(sql, params)
+
+
 
         else:
             img_url = img_url[0]
@@ -123,6 +124,7 @@ class MyfendoPipeline(object):
                 img_url = 'http://www.meinvha.com' + img_url
 
             ir = requests.get(img_url)
+
             if ir.status_code == 200:
 
                 self.cursor.execute("select * from title where title= '%s'" % meinvha_title)
